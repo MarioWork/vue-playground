@@ -4,23 +4,25 @@ import TheWelcome from "./components/TheWelcome.vue";
 
 const defaultMessage = "Welcome to my humble app";
 
+function data() {
+  return {
+    message: defaultMessage,
+  };
+}
+
+function message(newValue) {
+  console.log(newValue);
+}
+
+function resetMessage() {
+  this.message = defaultMessage;
+}
+
 export default {
   components: { HelloWorld, TheWelcome },
-  data() {
-    return {
-      message: defaultMessage,
-    };
-  },
-  watch: {
-    message(newValue) {
-      console.log(newValue);
-    },
-  },
-  methods: {
-    resetMessage() {
-      this.message = defaultMessage;
-    },
-  },
+  data,
+  watch: { message },
+  methods: { resetMessage },
 };
 </script>
 
