@@ -39,6 +39,11 @@ h3 {
   font-size: 1.2rem;
 }
 
+ul {
+  padding: 1em;
+  padding-bottom: 0.5em;
+}
+
 .greetings h1,
 .greetings h3 {
   text-align: center;
