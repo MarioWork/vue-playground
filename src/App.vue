@@ -1,6 +1,20 @@
-<script setup>
+<script>
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
+
+export default {
+  components: { HelloWorld, TheWelcome },
+  data() {
+    return {
+      message: "Hello world!!",
+    };
+  },
+  watch: {
+    message(newValue) {
+      console.log(newValue);
+    },
+  },
+};
 </script>
 
 <template>
@@ -12,9 +26,9 @@ import TheWelcome from "./components/TheWelcome.vue";
       width="125"
       height="125"
     />
-
     <div class="wrapper">
-      <HelloWorld msg="You did it Boy!" />
+      <HelloWorld :msg="message" />
+      <input type="text" v-model="message" />
     </div>
   </header>
 
