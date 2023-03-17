@@ -2,16 +2,23 @@
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 
+const defaultMessage = "Welcome to my humble app";
+
 export default {
   components: { HelloWorld, TheWelcome },
   data() {
     return {
-      message: "Hello world!!",
+      message: defaultMessage,
     };
   },
   watch: {
     message(newValue) {
       console.log(newValue);
+    },
+  },
+  methods: {
+    resetMessage() {
+      this.message = defaultMessage;
     },
   },
 };
@@ -29,6 +36,7 @@ export default {
     <div class="wrapper">
       <HelloWorld :msg="message" />
       <input type="text" v-model="message" />
+      <button @click="resetMessage">Reset Message</button>
     </div>
   </header>
 
@@ -40,11 +48,35 @@ export default {
 <style scoped>
 header {
   line-height: 1.5;
+  gap: 1em;
+}
+
+.wrapper {
+  gap: 1em;
 }
 
 .logo {
   display: block;
   margin: 0 auto 2rem;
+}
+
+header button {
+  background-color: rgb(0, 139, 93);
+  color: white;
+  padding: 0.5em;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+header input {
+  padding: 0.5em;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
 }
 
 @media (min-width: 1024px) {
