@@ -1,10 +1,17 @@
 <script>
-defineProps({
-  msg: {
-    type: String,
-    required: true,
+export default {
+  props: {
+    msg: String,
   },
-});
+  data() {
+    return {
+      items: [
+        { id: 1, name: "Mario" },
+        { id: 2, name: "Jose" },
+      ],
+    };
+  },
+};
 </script>
 
 <template>
@@ -15,6 +22,9 @@ defineProps({
       <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
       <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
     </h3>
+    <ul>
+      <li v-for="{ id, name } of items" :key="id">{{ name }}</li>
+    </ul>
   </div>
 </template>
 
