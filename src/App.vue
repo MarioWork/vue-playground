@@ -1,28 +1,27 @@
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
-
-const defaultMessage = "Welcome to my humble app";
+import UsersList from "./components/UsersList.vue";
 
 function data() {
   return {
-    message: defaultMessage,
+    name: "",
   };
 }
 
-function message(newValue) {
+function name(newValue) {
   console.log(newValue);
 }
 
-function resetMessage() {
-  this.message = defaultMessage;
+function resetName() {
+  this.name = "";
 }
 
 export default {
-  components: { HelloWorld, TheWelcome },
+  components: { HelloWorld, TheWelcome, UsersList },
   data,
-  watch: { message },
-  methods: { resetMessage },
+  watch: { name },
+  methods: { resetName },
 };
 </script>
 
@@ -36,9 +35,12 @@ export default {
       height="125"
     />
     <div class="wrapper">
-      <HelloWorld :msg="message" />
-      <input type="text" v-model="message" />
-      <button @click="resetMessage">Reset Message</button>
+      <HelloWorld :msg="'Welcome to my humble app'" />
+      <div id="form">
+        <input type="text" v-model="name" />
+        <button @click="resetName">Reset name</button>
+      </div>
+      <UsersList :name="name" />
     </div>
   </header>
 
@@ -54,6 +56,8 @@ header {
 }
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
   gap: 1em;
 }
 
@@ -79,6 +83,13 @@ header input {
   border: none;
   border-radius: 5px;
   width: 100%;
+}
+
+#form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
 @media (min-width: 1024px) {
