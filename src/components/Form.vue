@@ -15,6 +15,7 @@ function updateName(e) {
 }
 
 export default {
+  emits: ["resetName", "updateName"],
   props: {
     name: {
       type: String,
