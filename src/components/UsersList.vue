@@ -13,6 +13,15 @@ async function getUsers() {
   return data;
 }
 
+const filterUsers = (users, query) =>
+  query
+    ? users.filter(
+        ({ first_name, last_name }) =>
+          first_name.toUpperCase().includes(query.toUpperCase()) ||
+          last_name.toUpperCase().includes(query.toUpperCase())
+      )
+    : users;
+
 export default {
   props: {
     name: {
@@ -33,11 +42,7 @@ export default {
   },
   watch: {
     name(newValue) {
-      this.filteredUsers = newValue
-        ? this.users.filter(({ first_name, last_name }) =>
-            first_name.includes(newValue || last_name.includes(newValue))
-          )
-        : this.users;
+      this.filteredUsers = filterUsers(this.users, newValue);
     },
   },
 };
