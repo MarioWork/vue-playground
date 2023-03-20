@@ -44,7 +44,7 @@ export default {
     />
     <div class="wrapper">
       <HelloWorld :msg="'Welcome to my humble app'" />
-      <Form @resetName="resetName" @updateName="updateName" :name="name" />
+      <Form @reset-name="resetName" @update-name="updateName" :name="name" />
       <UsersList :name="name" />
     </div>
   </header>
