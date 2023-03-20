@@ -2,6 +2,7 @@
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 import UsersList from "./components/UsersList.vue";
+import Form from "./components/Form.vue";
 
 function data() {
   return {
@@ -13,15 +14,22 @@ function name(newValue) {
   console.log(newValue);
 }
 
+function updateName(name) {
+  this.name = name;
+}
+
 function resetName() {
   this.name = "";
 }
 
 export default {
-  components: { HelloWorld, TheWelcome, UsersList },
+  components: { HelloWorld, TheWelcome, UsersList, Form },
   data,
   watch: { name },
-  methods: { resetName },
+  methods: {
+    resetName,
+    updateName,
+  },
 };
 </script>
 
@@ -36,10 +44,7 @@ export default {
     />
     <div class="wrapper">
       <HelloWorld :msg="'Welcome to my humble app'" />
-      <div id="form">
-        <input type="text" v-model="name" />
-        <button @click="resetName">Reset name</button>
-      </div>
+      <Form @resetName="resetName" @updateName="updateName" :name="name" />
       <UsersList :name="name" />
     </div>
   </header>
@@ -75,21 +80,6 @@ header button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
-
-header input {
-  padding: 0.5em;
-  font-size: 1em;
-  border: none;
-  border-radius: 5px;
-  width: 100%;
-}
-
-#form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
 }
 
 @media (min-width: 1024px) {
