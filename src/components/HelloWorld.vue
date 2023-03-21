@@ -1,3 +1,10 @@
+<template>
+  <div class="greetings">
+    <h1 class="green">{{ msg }}</h1>
+    <h3>Enter a name to filter the users list</h3>
+  </div>
+</template>
+
 <script>
 export default {
   props: {
@@ -5,13 +12,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>Enter a name to filter the users list</h3>
-  </div>
-</template>
 
 <style scoped>
 h1 {
