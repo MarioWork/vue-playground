@@ -1,3 +1,24 @@
+<template>
+  <header>
+    <img
+      alt="Vue logo"
+      class="logo"
+      src="./assets/logo.svg"
+      width="125"
+      height="125"
+    />
+    <div class="wrapper">
+      <HelloWorld :msg="'Welcome to my humble app'" />
+      <Form @reset-name="resetName" @update-name="updateName" :name="name" />
+      <UsersList :name="name" />
+    </div>
+  </header>
+
+  <main>
+    <TheWelcome />
+  </main>
+</template>
+
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
@@ -32,27 +53,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="./assets/logo.svg"
-      width="125"
-      height="125"
-    />
-    <div class="wrapper">
-      <HelloWorld :msg="'Welcome to my humble app'" />
-      <Form @reset-name="resetName" @update-name="updateName" :name="name" />
-      <UsersList :name="name" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
-</template>
 
 <style scoped>
 header {
